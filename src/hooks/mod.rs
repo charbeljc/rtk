@@ -30,7 +30,7 @@ fn is_rtk_binary(binary: &str) -> bool {
 }
 
 fn is_rtk_hook_command(command: &str, agent: &str) -> bool {
-    let parts = crate::discover::lexer::shell_split(command);
+    let parts = crate::core::cmdline::lexer::shell_split(command);
     let [parsed_binary, hook, target] = parts.as_slice() else {
         return false;
     };
@@ -43,7 +43,7 @@ pub fn is_claude_hook_command(command: &str) -> bool {
 }
 
 pub fn is_legacy_rewrite_hook(command: &str) -> bool {
-    let parts = crate::discover::lexer::shell_split(command);
+    let parts = crate::core::cmdline::lexer::shell_split(command);
     let [word] = parts.as_slice() else {
         return false;
     };
